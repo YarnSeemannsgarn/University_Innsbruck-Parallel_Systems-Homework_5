@@ -1,7 +1,8 @@
 #!/bin/sh
 
 #$ -sync yes
-#$ -o qsub.out
+#$ -o qsub.dat
+#$ -e qsub.err
 #$ -j yes
 #$ -cwd
 #$ -pe openmp 8

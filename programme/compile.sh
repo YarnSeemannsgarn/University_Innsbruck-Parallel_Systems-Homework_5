@@ -1,7 +1,9 @@
 #!/bin/sh
 
 CC=icc
-CFLAGS="-O2 -parallel -par-report3 -par-threshold0 -ipo"
+CFLAGS="-parallel -par-report3 -par-threshold0 -ipo"
+
+module load intel/13.0
 
 for i in {01..15}; do 
 	i=$(printf "%02d" $i)

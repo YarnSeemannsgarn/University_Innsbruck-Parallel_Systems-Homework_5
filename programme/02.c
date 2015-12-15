@@ -1,14 +1,16 @@
-#define N 25000
+#define N 100000L
 
 short b[N][N];
 long i, j;
 
 short function_call() {
-	return 1;
+  return 1;
 }
 
 int main() {
-	for (i = 0; i < N; i++)
-		for (j = 0; j < N; j++)
-			b[i][j] = function_call();
+  #pragma parallel
+  for (i = 0; i < N; i++)
+    #pragma parallel
+    for (j = 0; j < N; j++)
+      b[i][j] = function_call();
 }

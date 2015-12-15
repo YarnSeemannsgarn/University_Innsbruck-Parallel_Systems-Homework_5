@@ -1,0 +1,255 @@
+# command: ./01 --> this was without pragma, in README with pragma
+# threads: 1
+
+real	0m4.093s
+
+# threads: 2
+
+real	0m4.023s
+
+# threads: 4
+
+real	0m4.023s
+
+# threads: 8
+
+real	0m4.022s
+
+# command: ./02
+# threads: 1
+
+real	0m0.029s
+
+# threads: 2
+
+real	0m0.204s
+
+# threads: 4
+
+real	0m0.205s
+
+# threads: 8
+
+real	0m0.205s
+
+# command: ./03
+# threads: 1
+
+real	0m2.711s
+
+# threads: 2
+
+real	0m1.784s
+
+# threads: 4
+
+real	0m1.174s
+
+# threads: 8
+
+real	0m2.201s
+
+# command: ./04
+# threads: 1
+
+real	0m2.300s
+
+# threads: 2
+
+real	0m2.256s
+
+# threads: 4
+
+real	0m2.253s
+
+# threads: 8
+
+real	0m2.257s
+
+# command: ./05
+# threads: 1
+
+real	0m6.966s
+
+# threads: 2
+
+real	0m6.796s
+
+# threads: 4
+
+real	0m6.790s
+
+# threads: 8
+
+real	0m6.838s
+
+# command: ./06
+# threads: 1
+
+real	0m5.958s
+
+# threads: 2
+
+real	0m5.908s
+
+# threads: 4
+
+real	0m5.939s
+
+# threads: 8
+
+real	0m5.959s
+
+# command: ./07
+# threads: 1
+
+real	0m12.131s
+
+# threads: 2
+
+real	0m10.007s
+
+# threads: 4
+
+real	0m7.831s
+
+# threads: 8
+
+real	0m7.850s
+
+# command: ./08
+# threads: 1
+
+real	0m9.851s
+
+# threads: 2
+
+real	0m7.356s
+
+# threads: 4
+
+real	0m6.358s
+
+# threads: 8
+
+real	0m5.786s
+
+# command: ./09
+# threads: 1
+
+real	0m4.975s
+
+# threads: 2
+
+real	0m4.193s
+
+# threads: 4
+
+real	0m3.177s
+
+# threads: 8
+
+real	0m4.988s
+
+# command: ./10
+# threads: 1
+
+real	0m5.002s
+
+# threads: 2
+
+real	0m4.999s
+
+# threads: 4
+
+real	0m4.981s
+
+# threads: 8
+
+real	0m4.979s
+
+# command: ./11
+# threads: 1
+
+real	0m5.170s
+
+# threads: 2
+
+real	0m5.138s
+
+# threads: 4
+
+real	0m5.138s
+
+# threads: 8
+
+real	0m5.139s
+
+# command: ./12
+# threads: 1
+
+real	0m38.589s
+
+# threads: 2
+
+real	0m32.074s
+
+# threads: 4
+
+real	0m25.301s
+
+# threads: 8
+
+real	0m23.137s
+
+# command: ./13
+# threads: 1
+
+real	0m13.216s
+
+# threads: 2
+
+real	0m9.410s
+
+# threads: 4
+
+real	0m7.225s
+
+# threads: 8
+
+real	0m8.071s
+
+# command: ./14
+# threads: 1
+
+real	0m1.600s
+
+# threads: 2
+
+real	0m3.487s
+
+# threads: 4
+
+real	0m4.291s
+
+# threads: 8
+
+real	0m6.100s
+
+# command: ./15
+# threads: 1
+
+real	0m20.816s
+
+# threads: 2
+
+real	0m12.330s
+
+# threads: 4
+
+real	0m7.701s
+
+# threads: 8
+
+real	0m7.300s
+
