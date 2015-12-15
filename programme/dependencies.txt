@@ -1,0 +1,112 @@
+1) no dependencies
+
+2) depends on function_call(); if it has no side effects then it can be parallelized, otherwise unpredictable
+
+3) could be anything, depending on the contents of a[]; assuming init with code from example 1) there are no dependencies (statement has no effect anyway), any useful statement however will probably introduce some dependencies
+
+4) a[]: true dependence, distance vector (1), direction vector (<)
+
+5) b[]: anti dependence, distance vector (k), direction vector (<)
+
+6) a[]: anti dependence if k small enough (otherwise indizes not reached twice in loop), distance vector (k), direction vector (<)
+
+7) no dependencies: 4*i always even, 2*i-1 always odd => won't be equal
+
+8) no dependencies, read/write always access different memory due to different first index (which is constant)
+
+9) no dependencies, i incremented by 2 -> write even i, read odd (i+1); as first index already different, second does not matter anymore
+
+10) b[] true dependence, distance vector (1), direction vector (<)
+    a[] anti dependence, distance vector (1), direction vector (<)
+
+11) true dependence of sum (new value written, same value read again in next iteration), distance vector (1), direction vector (<)
+    a[] no dependence, write occur on indizes 0 to N/2-1, reads from N/2 to N-1
+
+12) same as example 9)
+
+13) a[] output dependence, cause it writes multiple times to the same position
+
+    b[][] true dependency (output for N and M = 5):
+	j=0, i=2, S1->(3,0) S2->(1,2)
+	j=1, i=2, S1->(4,0) S2->(2,2)
+	j=2, i=2, S1->(5,0) S2->(3,2)  <-- write to (3,2)
+	j=3, i=2, S1->(6,0) S2->(4,2)
+	j=4, i=2, S1->(7,0) S2->(5,2)
+	j=0, i=3, S1->(3,1) S2->(1,3)
+	j=1, i=3, S1->(4,1) S2->(2,3)
+	j=2, i=3, S1->(5,1) S2->(3,3)
+	j=3, i=3, S1->(6,1) S2->(4,3)
+	j=4, i=3, S1->(7,1) S2->(5,3)
+	j=0, i=4, S1->(3,2) S2->(1,4)  <-- read from (3,2)
+	j=1, i=4, S1->(4,2) S2->(2,4)
+	j=2, i=4, S1->(5,2) S2->(3,4)
+	j=3, i=4, S1->(6,2) S2->(4,4)
+	j=4, i=4, S1->(7,2) S2->(5,4)
+
+distance vector (-2, 2), direction vector (>, <)
+
+14) anti dependence (output for N, M and P = 5)
+
+	i=2, j=1, k=0 S1 -> (0,2,3) (2,0,15)
+	i=2, j=1, k=1 S1 -> (0,2,6) (2,0,18)
+	i=2, j=1, k=2 S1 -> (0,2,9) (2,0,21)
+	i=2, j=1, k=3 S1 -> (0,2,12) (2,0,24)
+	i=2, j=1, k=4 S1 -> (0,2,15) (2,0,27)
+	i=2, j=2, k=0 S1 -> (0,4,3) (2,2,15)  <-- read from (2,2,15)
+	i=2, j=2, k=1 S1 -> (0,4,6) (2,2,18)
+	i=2, j=2, k=2 S1 -> (0,4,9) (2,2,21)
+	i=2, j=2, k=3 S1 -> (0,4,12) (2,2,24)
+	i=2, j=2, k=4 S1 -> (0,4,15) (2,2,27)
+	i=2, j=3, k=0 S1 -> (0,6,3) (2,4,15)
+	i=2, j=3, k=1 S1 -> (0,6,6) (2,4,18)
+	i=2, j=3, k=2 S1 -> (0,6,9) (2,4,21)
+	i=2, j=3, k=3 S1 -> (0,6,12) (2,4,24)
+	i=2, j=3, k=4 S1 -> (0,6,15) (2,4,27)
+	i=2, j=4, k=0 S1 -> (0,8,3) (2,6,15)
+	i=2, j=4, k=1 S1 -> (0,8,6) (2,6,18)
+	i=2, j=4, k=2 S1 -> (0,8,9) (2,6,21)
+	i=2, j=4, k=3 S1 -> (0,8,12) (2,6,24)
+	i=2, j=4, k=4 S1 -> (0,8,15) (2,6,27)
+	i=3, j=1, k=0 S1 -> (1,2,3) (3,0,15)
+	i=3, j=1, k=1 S1 -> (1,2,6) (3,0,18)
+	i=3, j=1, k=2 S1 -> (1,2,9) (3,0,21)
+	i=3, j=1, k=3 S1 -> (1,2,12) (3,0,24)
+	i=3, j=1, k=4 S1 -> (1,2,15) (3,0,27)
+	i=3, j=2, k=0 S1 -> (1,4,3) (3,2,15)
+	i=3, j=2, k=1 S1 -> (1,4,6) (3,2,18)
+	i=3, j=2, k=2 S1 -> (1,4,9) (3,2,21)
+	i=3, j=2, k=3 S1 -> (1,4,12) (3,2,24)
+	i=3, j=2, k=4 S1 -> (1,4,15) (3,2,27)
+	i=3, j=3, k=0 S1 -> (1,6,3) (3,4,15)
+	i=3, j=3, k=1 S1 -> (1,6,6) (3,4,18)
+	i=3, j=3, k=2 S1 -> (1,6,9) (3,4,21)
+	i=3, j=3, k=3 S1 -> (1,6,12) (3,4,24)
+	i=3, j=3, k=4 S1 -> (1,6,15) (3,4,27)
+	i=3, j=4, k=0 S1 -> (1,8,3) (3,6,15)
+	i=3, j=4, k=1 S1 -> (1,8,6) (3,6,18)
+	i=3, j=4, k=2 S1 -> (1,8,9) (3,6,21)
+	i=3, j=4, k=3 S1 -> (1,8,12) (3,6,24)
+	i=3, j=4, k=4 S1 -> (1,8,15) (3,6,27)
+	i=4, j=1, k=0 S1 -> (2,2,3) (4,0,15)
+	i=4, j=1, k=1 S1 -> (2,2,6) (4,0,18)
+	i=4, j=1, k=2 S1 -> (2,2,9) (4,0,21)
+	i=4, j=1, k=3 S1 -> (2,2,12) (4,0,24)
+	i=4, j=1, k=4 S1 -> (2,2,15) (4,0,27)  <-- write to (2,2,15)
+	i=4, j=2, k=0 S1 -> (2,4,3) (4,2,15)
+	i=4, j=2, k=1 S1 -> (2,4,6) (4,2,18)
+	i=4, j=2, k=2 S1 -> (2,4,9) (4,2,21)
+	i=4, j=2, k=3 S1 -> (2,4,12) (4,2,24)
+	i=4, j=2, k=4 S1 -> (2,4,15) (4,2,27)
+	i=4, j=3, k=0 S1 -> (2,6,3) (4,4,15)
+	i=4, j=3, k=1 S1 -> (2,6,6) (4,4,18)
+	i=4, j=3, k=2 S1 -> (2,6,9) (4,4,21)
+	i=4, j=3, k=3 S1 -> (2,6,12) (4,4,24)
+	i=4, j=3, k=4 S1 -> (2,6,15) (4,4,27)
+
+
+distance vector (2, -1, 4), direction vector (<, >, <)
+
+15) a[] no dependency - read always from [1][...], write only at locations with first index >= 2
+    b[] true dependency between writes from j=1 to 49 and reads from j=51 to 99, always when i=1 ; distance vector (0, *), direction vector (=,<)
+        anti dependency between reads from j=1 to 49 and writes from j=51 to 99, always when i=1 ; distance vector (0, *), vector (=,<)
+        true dependency for write and read at j=50; distance (0,0), vector (=,=)

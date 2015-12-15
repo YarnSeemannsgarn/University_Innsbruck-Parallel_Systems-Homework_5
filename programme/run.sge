@@ -1,0 +1,19 @@
+#!/bin/sh
+
+#$ -sync yes
+#$ -o qsub.out
+#$ -j yes
+#$ -cwd
+#$ -pe openmp 8
+
+module load intel/13.0
+
+echo "# command: $@"
+for threads in 1 2 4 8; do
+	export OMP_NUM_THREADS=$threads
+	echo "# threads: $threads"
+	time $@
+
+	echo
+done
+
